@@ -1,13 +1,16 @@
-# Gemini Chatbot
+# BotaxAI Chatbot
 
-Chatbot yang menggunakan Google Gemini API.
+Chatbot yang dapat membantu anda dalam segala hal
 
-## Persyaratan
+## Teknologi
 
-- Node.js (v16 atau lebih baru)
-- API Key Google Gemini (dapatkan dari [Google AI Studio](https://makersuite.google.com/))
+- Node.js
+- HTML
+- CSS
+- Javascript
+- Tailwindcss
+- API Google
 
-## Cara Menjalankan
 
-1. Clone repositori ini
-2. Buat file `.env` di folder server dan tambahkan:
+# Author
+- Ridwan

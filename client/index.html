@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Botax Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-gray-100 h-screen flex flex-col">
+    <header class="bg-blue-600 text-white p-4 shadow-md flex items-center">
+      <h1 class="text-2xl font-bold">Botax AI Chatbot</h1>
+      <!-- Tombol kontrol akan ditambahkan via JavaScript -->
+    </header>
+
+    <main class="flex-1 overflow-hidden p-4 flex flex-col">
+      <div id="chat-container" class="flex-1 overflow-y-auto mb-4 space-y-4">
+        <!-- Pesan akan muncul di sini -->
+        <div class="text-center text-gray-500 py-4">
+          Mulai percakapan dengan Botax AI...
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md p-4">
+        <div class="flex space-x-2">
+          <input
+            id="user-input"
+            type="text"
+            placeholder="Ketik pesan Anda..."
+            class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            id="send-btn"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Kirim
+          </button>
+        </div>
+        <div class="mt-2 flex justify-between text-sm text-gray-500">
+          <span>Botax AI</span>
+          <span id="status">Siap</span>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="start-server.js"></script>
+
+    <script>
+      // Cek koneksi server saat halaman load
+      window.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const response = await fetch("http://localhost:3000/health-check");
+          if (!response.ok) {
+            // Jika server mati, trigger start
+            fetch("http://localhost:3000/start-server", { method: "POST" });
+          }
+        } catch {
+          alert("Server sedang dimulai... Refresh dalam 5 detik.");
+          setTimeout(() => location.reload(), 5000);
+        }
+      });
+    </script>
+  </body>
+</html>
